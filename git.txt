@@ -7,10 +7,11 @@ after starting we make a repo
 
 modified  | changes  | commited
 								
+git --version
 
 branch 
 
-1) creating new repo
+1) creating new repo and staging
 
 	cd\ dir
 
@@ -20,4 +21,17 @@ branch
 	
 	git init
 
+	git status # show which file in staging area and which file have been changed
+
+	git add . # adds all the files we can also give git add finle path with name
+
+	git rm --cached index.html #cached  file name will remove file from staging area
+	
+
+
+2) git commit to commit a file
+
+	git commit -m "descriptive message " # will commit to the master branch
+	
+	git log # details of the commitedfiles
 
