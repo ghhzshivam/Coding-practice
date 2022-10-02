@@ -1,0 +1,23 @@
+Git 
+
+git have different files 
+.git shows the repo folder stared
+
+after starting we make a repo
+
+modified  | changes  | commited
+								
+
+branch 
+
+1) creating new repo
+
+	cd\ dir
+
+	mkdir folder_name name if folder
+	
+	cd folder_name
+	
+	git init
+
+
