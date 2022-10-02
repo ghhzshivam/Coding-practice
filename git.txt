@@ -21,11 +21,11 @@ branch
 	
 	git init
 
-	git status # show which file in staging area and which file have been changed
+	git status 		# show which file in staging area and which file have been changed
 
-	git add . # adds all the files we can also give git add finle path with name
+	git add . 		# adds all the files we can also give git add finle path with name
 
-	git rm --cached index.html #cached  file name will remove file from staging area
+	git rm --cached index.html 	#cached  file name will remove file from staging area
 	
 
 
@@ -33,5 +33,75 @@ branch
 
 	git commit -m "descriptive message " # will commit to the master branch
 	
-	git log # details of the commitedfiles
+	git log 		# details of the commitedfiles
+	git log --oneline 	# to see log in one line
+
+    a) Checkout commit: state of commit inearlier code
+	
+	git checkout id # id is from git log --oneline	
+	
+	git checkout master 	# to go back to master branch
+	    
+    b) revert commit : rvert changes it and the changes never commited. undo 1 ispecific commit. On the staging area a new log of rever folder comes
+	
+	git revert id 		#after this :wq to go back to master
+ 
+    c) reset commit : it reset to the point and 
+
+	git reset id 
+
+	git reset id --hard 	#won't let commit more
+
+
+
+3) Branches
+It is a isolated enviroment to cehck out the new features
+We work with branch and then merge 
+we can also delete the branch
+
+	git branch branch_name 	# Create the branch
+
+	git branch -a 		# Show all the branches and highlight current branch
+
+	git checkout branch name 	# Switch to the branch name
+
+	git branch -D branch name 	# -d for delte befor -d for delete after merging
+
+	git checktout -b branch name 	# creating a branch and going in there
+
+	
+
+4) merging:
+
+	git merge branch name 	# using master branch so checkout master first
+
+Conflict occur when 2 people edit same file and merge
+
+5) push
+
+	git push repo link 	# Pushes code
+
+to get rid of typping same link we can do
+	
+	git remote add origin repo link 
+
+	git push origin 	# Origin can be any alis  add pink and push pink
+
+
+	git clone repo link 	# To clone whole repo
+when we clone the code can be pushed using push origin as by default for link
+
+
+
+6) pull
+used to pull all the updates from the repo if any changes
+	
+	git pull origin master 	# Do form master branch
+
+
+
+
+
+
+
 
