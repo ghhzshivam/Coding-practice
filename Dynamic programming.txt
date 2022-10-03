@@ -1,0 +1,56 @@
+Dynamic programming
+
+Dynamic Programming is mainly an optimization over plain recursion. Wherever we see a recursive solution that has repeated 
+calls for same inputs, we can optimize it using Dynamic Programming. The idea is to simply store the results of subproblems,
+ so that we do not have to re-compute them when needed later. This simple optimization reduces time complexities from 
+ exponential to polynomial.
+
+1) Optimal substructure 
+2) Overlapping Subproblem
+
+To solve the problem we can do 2 things
+"Remember the result" -> Don't recalculate and solve problem again and again.
+
+1) Memorisation(Top-Down)- whenever we saw the solution we save it in memory.
+2) Tabulation(Bottom up) -we precompute the solution and lokup later.
+
+
+
+
+
+ques 1) Bell No 
+Bell Numbers (Number of ways to Partition a Set)
+# Input:  n = 2
+# Output: Number of ways = 2
+# Explanation: Let the set be {1, 2}
+#             { {1}, {2} } 
+#             { {1, 2} }
+
+wehave formula but we can solve it by using bell traingle
+1   last no = first of next and sum no upper and lower t get result
+1 2
+2 3 5
+5 7 10 15
+15 20 27 37 52
+
+Soln) def bellno(n):
+
+    bell = [[0 for _ in range(n+1)] for j in range(n+1)]
+
+    # first row first column = 1
+    bell[0][0] = 1
+
+    for i in range(1,n+1):
+
+        # every row 1st column is the last no in the previous row
+        bell[i][0] = bell[i-1][i-1]
+
+        for j in range(1, i+1):
+
+            bell[i][j] = bell[i-1][j-1]+bell[i][j-1]
+        
+
+
+    return bell[n][0]
+
+bellno(3)

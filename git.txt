@@ -36,7 +36,7 @@ branch
 	git log 		# details of the commitedfiles
 	git log --oneline 	# to see log in one line
 
-    a) Checkout commit: state of commit inearlier code
+    a) Checkout commit: state of commit in earlier code
 	
 	git checkout id # id is from git log --oneline	
 	
