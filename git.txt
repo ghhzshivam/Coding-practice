@@ -67,7 +67,7 @@ we can also delete the branch
 
 	git branch -D branch name 	# -d for delte befor -d for delete after merging
 
-	git checktout -b branch name 	# creating a branch and going in there
+	git checktout -b branch_name 	# creating a branch and going in there
 
 	
 
