@@ -92,13 +92,12 @@ to get rid of typping same link we can do
 when we clone the code can be pushed using push origin as by default for link
 
 
-If the origin is set so emove it first and then set a new one
+If the origin is set so remove it first and then set a new one
 
 git push -u origin main
 
 
 git push -u origin main
-
 
 
 
@@ -108,7 +107,7 @@ used to pull all the updates from the repo if any changes
 	git pull origin master 	# Do form master branch
 
 
-
+Normal Errors
 
 
 
