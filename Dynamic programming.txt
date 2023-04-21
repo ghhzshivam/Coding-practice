@@ -26,7 +26,7 @@ Bell Numbers (Number of ways to Partition a Set)
 #             { {1}, {2} } 
 #             { {1, 2} }
 
-wehave formula but we can solve it by using bell traingle
+we have a formula but we can solve it by using bell traingle as we can see the sub problem can think of  a solution in matrix
 1   last no = first of next and sum no upper and lower t get result
 1 2
 2 3 5
