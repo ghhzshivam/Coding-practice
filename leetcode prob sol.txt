@@ -1,12 +1,17 @@
 leetcode problems with solution
 
 
-
-
+Points
+1) Best data structure to store data
+2) Is recursion required
+3) If recuresion so can we use it as dp
+4) get a solution and optimize
+5) At last work on code readability and reduce run time.
 
 
 # 13. Roman to Integer
 Sol
+# Dictionary is very good to use here as it will store all the characters.
 def rome(s):
     res = 0
     d = {'I':1, "V": 5, 'X': 10, 'L': 50, 'C': 100, "D": 500, 'M': 1000}
