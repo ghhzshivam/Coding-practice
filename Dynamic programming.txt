@@ -54,3 +54,61 @@ Soln) def bellno(n):
     return bell[n][0]
 
 bellno(3)
+
+
+
+
+# 289. Game of Life
+In this code we are using for loop and then running another for loop under the double for loop 
+Time complexity is n^3
+
+b = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
+
+        #  1 -> 0  : 2
+        #  1 -> 1  : 1
+        #  1 -> 0  : 3
+        #  0 -> 1  : 4
+
+
+# Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
+r  = len(b)
+c = len(b[0])
+
+n = [[0 for i in range(c)]for i in range(r)]
+
+d = [(1,0), (-1,0), (0,1), (0,-1), (1,1), (-1,1), (1,-1), (-1,-1)]
+dummy = []
+
+for i in b:
+    dummy.append(i[:])
+
+print(dummy)
+
+for i in range(r):
+    for j in range(c):
+        live = 0
+        dead = 0
+
+        for x,y in d:
+            a = x+i
+            b = y+j
+
+            if r>a>=1 and c>b>=0:
+                if dummy[a][b] ==1:
+                    live+= 1
+                else:
+                    dead +=1
+                     
+        if dummy[i][j] ==1:
+            if live<2:
+                n[i][j] = 0
+            elif 3>=live>=2:
+                n[i][j] = 1
+            elif live>3:
+                n[i][j] = 0
+
+        else:
+            if live ==3:
+                n[i][j] = 1
+
+print(n)
