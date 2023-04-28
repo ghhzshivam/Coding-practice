@@ -60,7 +60,7 @@ bellno(3)
 
 # 289. Game of Life
 In this code we are using for loop under a for loop and then running another for loop under the double for loop 
-Time complexity is n^3
+Time complexity is n^3.
 
 b = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
 
