@@ -76,6 +76,7 @@ c = len(b[0])
 
 n = [[0 for i in range(c)]for i in range(r)]
 
+Taking and checking all near te centre
 d = [(1,0), (-1,0), (0,1), (0,-1), (1,1), (-1,1), (1,-1), (-1,-1)]
 dummy = []
 
