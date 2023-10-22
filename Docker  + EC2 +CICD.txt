@@ -1,0 +1,74 @@
+
+
+1) Docker builf CHecked
+2) Github Workflow (main.yaml)
+3) Iam user in aws (GIve permission for AmazonEC2ContainerRegistryFullAccess and AmazonEC2FullAccess)
+4) ECR repository 
+link: 818652424131.dkr.ecr.us-east-1.amazonaws.com/employee-churn
+
+
+
+5) EC2 (T2 medium as need 1.5 gb) and connect
+Down .csv containg AWS_ACCESS_KEY_ID amd AWS_SECRET_ACCESS_KEY while creating EC2.
+
+Docker Setup In EC2 commands to be Executed
+#optinal
+
+sudo apt-get update -y
+
+sudo apt-get upgrade
+
+#required 
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+sudo sh get-docker.sh
+
+sudo usermod -aG docker ubuntu
+
+newgrp docker
+
+
+6) Configure EC2 as self-hosted runner:  (When we commit code  the runner should automatically run code)
+
+runner name - self-hosted
+
+here after adding new runner we get commands.
+copy paste them to the amazonawscli
+
+
+7) Setting up git ub secreats
+settings/ secrets and variables/ action 
+new repo secrets
+downloaded when created the ec2 and save as .csv
+AWS_ACCESS_KEY_ID=  EC2
+
+AWS_SECRET_ACCESS_KEY=EC2 
+
+AWS_REGION = us-east-1 as per EC2
+
+AWS_ECR_LOGIN_URI = 818652424131.dkr.ecr.us-east-1.amazonaws.com  (THe URI part of ECR)
+
+ECR_REPOSITORY_NAME = employee-churn (The registry name part of ECR)
+
+8) When make changes so the code autoatically deploy
+change the app namae and port every time so won't clash
+ap name changes with version.
+
+
+9) Aws security port should be same as  docker configured port.
+
+10) Use Route53 to connect to domain name on go dady
+
+a) self hosted zoness   - domain name
+
+b) in self hosted zone add 2 new records
+    b.1) A service with ec2 IP
+    b.2) CNAME record with www and domain name.
+
+c) noe by one copy all nameservers from AWS (4) and pasete in 
+go daddy/ dashboard/ domain name setting/ dns/ Name servers/ 
+Then delete or change all nameservers and add the nameservers without last . (eg: ns-336.awsdns-42.com) one by one
+
+
+
