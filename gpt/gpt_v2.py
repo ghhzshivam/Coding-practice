@@ -112,6 +112,25 @@ class FeedForward(nn.Module):
     def forward(self, x):
         return self.net(x)
 
+
+class Block(nn.Module): 
+    """ A complete transformer block."""
+
+    def __init__(self, n_embed, n_heads):
+        super().__init__()
+
+        head_size = n_embed//n_heads
+
+        self.sa = MultiHeadAttention(n_heads, head_size)
+        self.ffwd = FeedForward(n_embed)
+
+
+    def forward(self, x):
+        x = self.sa(x) # (B, T, C)
+        x = self.ffwd(x) # (B, T, C)
+        return x
+    
+
 # super simple bigram model
 class BigramLanguageModel(nn.Module):
 
@@ -122,14 +141,21 @@ class BigramLanguageModel(nn.Module):
         self.position_embedding_table = nn.Embedding(block_size, n_embed) # n_embed is the dimensionality of the embeddings
         self.lm_head = nn.Linear(n_embed, vocab_size) # vocab_size is the size of the output vocabulary
         
-        ## for single headed self attention
-        # self.sa_heads = Head(n_embed)
+        # ## for single headed self attention
+        # # self.sa_heads = Head(n_embed)
 
-        ## For multi headed
-        self.sa_heads = MultiHeadAttention(4, n_embed//4)  # 4 heads, each with 8 dimensionality self attention ( n_embed//4 )
+        # ## For multi headed
+        # self.sa_heads = MultiHeadAttention(4, n_embed//4)  # 4 heads, each with 8 dimensionality self attention ( n_embed//4 )
  
-        ## Feed forward nn
-        self.ffwd = FeedForward(n_embed)
+        # ## Feed forward nn
+        # self.ffwd = FeedForward(n_embed)
+
+        self.blocks = nn.Sequential(
+            Block(n_embed, n_heads=4), # 4 transformer blocks
+            Block(n_embed, n_heads=4),
+            Block(n_embed, n_heads=4)
+        )
+
 
 
     def forward(self, idx, targets=None):
@@ -140,9 +166,11 @@ class BigramLanguageModel(nn.Module):
         pos_emb = self.position_embedding_table(torch.arange(T, device=device)) # (B,T,n_embed)
         x = token_emb + pos_emb # (B,T,C)
         
-        x = self.sa_heads(x) # (B,T,C) Applying self attention head to the embeddings
+        # x = self.sa_heads(x) # (B,T,C) Applying self attention head to the embeddings
         
-        x = self.ffwd(x) # (B,T,C) Applying feed forward network to the embeddings
+        # x = self.ffwd(x) # (B,T,C) Applying feed forward network to the embeddings
+        
+        x = self.blocks(x) # (B,T,C) Applying all transformer blocks to the embeddings
 
         logits = self.lm_head(x) # (B,T,vocab_size)
 
