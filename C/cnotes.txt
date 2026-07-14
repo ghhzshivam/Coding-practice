@@ -1,0 +1,91 @@
+Pointer = address of variable
+Pointer stores address, *pointer accesses the value at that address
+
+int a = 10;
+int *p = &a;
+Expression	Meaning
+a	value
+&a	address
+p	address
+*p	value at address
+Your house = variable
+Your house number = memory address
+A paper that has your house number written on it = pointer
+So:
+Variable → holds data
+Pointer → holds where the data lives
+Pointer = address holder
+* = go to that address
+DS = memory + pointers
+printf("%d", *p);   // 10
+
+Example: Passing large data
+Python
+def process(arr):
+    arr[0] = 99
+
+
+Python:
+
+Passes reference
+
+But adds:
+
+Type checks
+
+Bounds checks
+
+Garbage collection
+
+Dynamic dispatch
+
+C
+void process(int *arr) {
+    arr[0] = 99;
+}
+
+
+C:
+
+No type checking at runtime
+
+No bounds checking
+
+Direct memory access
+
+👉 C is closer to CPU → fewer instructionsWhy Python is slower (but safer)
+
+Python adds:
+
+Automatic memory management
+
+Reference counting
+
+Garbage collection
+
+Type safety
+
+Exception handling
+
+All of this = extra CPU work
+
+C removes all of it.
+
+for(initialization; condition; update)
+
+
+Arithmetic
+
++ - * / %
+
+Relational
+
+== != > < >= <=
+
+Logical
+
+&& || !
+
+Assignment
+
+= += -=
